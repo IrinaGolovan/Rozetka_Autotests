@@ -11,11 +11,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
  */
 public class ConfigurationManager {
 
-    WebDriver driver;
+    private WebDriver driver;
 
-    public WebDriver getDriver(){
-        return driver;
-    }
+    public WebDriver getDriver(){ return driver; }
 
     public void startDriver(String browser, String url){
         if(browser.equalsIgnoreCase("chrome")){
@@ -30,5 +28,11 @@ public class ConfigurationManager {
             driver.navigate().to(url);
         }
     }
+
+    public void quitDriver(){ driver.quit(); }
+
+    public String getTitle(){ return driver.getTitle(); }
+
+    public String getCurrentUrl(){ return driver.getCurrentUrl(); }
 
 }
