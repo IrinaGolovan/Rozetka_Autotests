@@ -17,10 +17,14 @@ public class ConfigurationManager {
     private WebDriver driver;
     private int implicitWait = 10;
     private static final Logger logger = Logger.getLogger(ConfigurationManager.class);
+    private String chromeDriver = "D:/RozetkaProject/src/main/resources/webdriver/chromedriver/chromedriver.exe";
+    private String firefoxDriver = "D:/RozetkaProject/src/main/resources/webdriver/firefoxdriver/geckodriver.exe";
+
     public WebDriver getDriver(){ return driver; }
 
-    public void startDriver(String browser, String url){
+    protected void startDriver(String browser, String url){
         if(browser.equalsIgnoreCase("chrome")){
+            System.setProperty("webdriver.chrome.driver", chromeDriver);
             ChromeOptions options = new ChromeOptions();
             options.setCapability("platform", "WINDOWS");
             driver = new ChromeDriver(options);
@@ -37,16 +41,16 @@ public class ConfigurationManager {
         }
     }
 
-    public void quitDriver(){
+    protected void quitDriver(){
         driver.quit();
     }
 
-    public String getTitle(){
+    protected String getTitle(){
         logger.info("Getting page title");
         return driver.getTitle();
     }
 
-    public String getCurrentUrl(){
+    protected String getCurrentUrl(){
         logger.info("Getting current url");
         return driver.getCurrentUrl();
     }
