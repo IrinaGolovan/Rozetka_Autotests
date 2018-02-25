@@ -5,6 +5,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import java.util.concurrent.TimeUnit;
+
 
 /**
  * Created by oleksandr on 17.02.2018.
@@ -12,6 +14,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class ConfigurationManager {
 
     private WebDriver driver;
+    private int implicitWait = 10;
 
     public WebDriver getDriver(){ return driver; }
 
@@ -20,10 +23,12 @@ public class ConfigurationManager {
             ChromeOptions options = new ChromeOptions();
             options.setCapability("platform", "WINDOWS");
             driver = new ChromeDriver(options);
+            driver.manage().timeouts().implicitlyWait(implicitWait, TimeUnit.SECONDS);
             driver.manage().window().maximize();
             driver.navigate().to(url);
         }else if(browser.equalsIgnoreCase("firefox")){
             driver = new FirefoxDriver();
+            driver.manage().timeouts().implicitlyWait(implicitWait, TimeUnit.SECONDS);
             driver.manage().window().maximize();
             driver.navigate().to(url);
         }
