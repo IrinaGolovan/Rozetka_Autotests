@@ -15,7 +15,8 @@ public class BasePage extends ConfigurationManager{
 
     @BeforeTest
     public void startApplication(){
-       logger.info("Java installation folder and Java version: " + System.getProperty("java.home") + " "
+       logger.info("|-----------------------------------------------------------------|");
+       logger.info("Java version: " + System.getProperty("java.home") + " "
                + System.getProperty("java.version"));
        logger.info("OS name is and OS version: " + System.getProperty("os.name") + " " +
                 System.getProperty("os.version"));
